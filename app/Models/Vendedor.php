@@ -5,7 +5,6 @@ use Core\BaseModel;
 
 class Vendedor extends BaseModel
 {
-
     protected $primaryKey = 'ven_id';
 
     protected $table = 'vendedores';
