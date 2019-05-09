@@ -1,8 +1,8 @@
 <?php
 
-namespace Modulos\Core\Repository;
+namespace App\Core;
 
-abstract class BaseRepository implements BaseRepositoryInterface
+abstract class BaseRepository
 {
     protected $model;
 
