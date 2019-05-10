@@ -47,6 +47,7 @@
 </div>
 
 <!-- Vendor scripts -->
+<script src="{{asset('/theme/vendor/pacejs/pace.min.js')}}"></script>
 <script src="{{asset('/theme/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('/theme/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('/theme/vendor/toastr/toastr.min.js')}}"></script>

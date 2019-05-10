@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Models;
-use Core\BaseModel;
+
+use App\Core\BaseModel;
 
 class Vendedor extends BaseModel
 {
@@ -15,12 +15,10 @@ class Vendedor extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'ven_end_id',
-		'ven_nome',
+        'ven_nome',
 		'ven_cpf',
 		'ven_sexo',
 		'ven_nascimento',
-		'ven_telefone',
 		'ven_celular',
 		'ven_email',
 		'ven_ativo',

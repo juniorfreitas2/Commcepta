@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Model\Vendedor;
+use App\Models\Vendedor;
 use App\Core\BaseRepository;
 
 class VendedorRepository extends BaseRepository

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Model\Produto;
+use App\Models\Produto;
 use App\Core\BaseRepository;
 
 class ProdutoRepository extends BaseRepository

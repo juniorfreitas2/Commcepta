@@ -8,8 +8,8 @@
                 </a>
             </div>
         </div>
-        <a class="navbar-brand" href="index.html">
-            Commcepta
+        <a class="navbar-brand" href="#" style="font-size:15px"> 
+        Commcepta
         </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">

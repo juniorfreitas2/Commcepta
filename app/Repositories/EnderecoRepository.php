@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Model\Endereco;
+use App\Models\Endereco;
 use App\Core\BaseRepository;
 
 class EnderecoRepository extends BaseRepository

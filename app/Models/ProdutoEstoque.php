@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Models;
-use Core\BaseModel;
+
+use App\Core\BaseModel;
 
 class ProdutoEstoque extends BaseModel
 {

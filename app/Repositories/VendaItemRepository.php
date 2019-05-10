@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Model\VendaItem;
+use App\Models\VendaItem;
 use App\Core\BaseRepository;
 
 class VendaItemRepository extends BaseRepository
