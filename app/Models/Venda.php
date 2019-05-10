@@ -17,8 +17,7 @@ class Venda extends BaseModel
      */
     protected $fillable = [
         'vnd_ven_id',
-		'vnd_status',
-		'vnd_total_venda'
+		'vnd_status'
     ];
 
 }

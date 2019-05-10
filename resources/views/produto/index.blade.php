@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="view-header">
                 <div class="header-icon">
-                    <i class="pe page-header-icon pe-7s-user"></i>
+                    <i class="fa fa-cube"></i>
                 </div>
                 <div class="header-title">
                     <h3 class="m-b-xs">Produtos</h3>

@@ -17,7 +17,6 @@ class CreateVendasTable extends Migration
             $table->increments('vnd_id');
             $table->integer('vnd_ven_id')->unsigned();
             $table->enum('vnd_status', ['R','F']);
-            $table->decimal('vnd_total_venda',10,2);
             $table->timestamps();
             
             //foreign key declarations
