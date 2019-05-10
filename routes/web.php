@@ -19,6 +19,8 @@ Route::resource('vendedores','VendedorController');
 Route::resource('produtos','ProdutoController');
 Route::resource('vendas','VendaController');
 Route::post('vendas/finalizar', 'VendaController@finalizar')->name('vendas.finalizar');
+Route::get('relatorio', 'VendaController@getRelatorio');
+
 // API
 Route::get('produtos/getinfo/{id}', 'ApiController@getInfoProduto');
 Route::post('produtos/additem', 'ApiController@addItem');

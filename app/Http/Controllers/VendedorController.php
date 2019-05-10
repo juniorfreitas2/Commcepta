@@ -32,18 +32,15 @@ class VendedorController extends BaseController
             $vendedor = $this->vendedorRepository->create($data);
             
             if (!$vendedor) {
-                // send flash message error
-                return redirect()->back()->withInput($request->all());
+                return redirect()->back()->withInput($request->all())->with('error', 'Erro ao salvar');
             }
 
-            // send flash message success
-            return redirect()->route('vendedores.index');
+            return redirect()->route('vendedores.index')->with('message', 'Salvo com sucesso');
         } catch (\Exception $e) {
             if (config('app.debug')) {
                 throw $e;
             }
-            // send flash message custom error
-            return redirect()->route('vendedores.index');
+            return redirect()->back()->with('error', 'Erro ao tentar salvar. Caso o problema persista, entre em contato com o suporte.');
         }
     }
 
@@ -52,8 +49,7 @@ class VendedorController extends BaseController
         $vendedor = $this->vendedorRepository->find($id);
             
         if (!$vendedor) {
-            // send flash message error
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Vendedor não existe');
         }
  
         return view('vendedor.edit', compact('vendedor'));
@@ -65,23 +61,19 @@ class VendedorController extends BaseController
             $data = $this->vendedorRepository->find($id);
 
             if (!$data) {
-                // send flash message error
-                return redirect()->back()->withInput($request->all());
+                return redirect()->back()->withInput($request->all())->with('error', 'Vendedor não existe');
             }
 
             if (!$this->vendedorRepository->update($request->all(), $data->ven_id, 'ven_id')){
-                // send flash message error
-                return redirect()->back()->withInput($request->all());
+                return redirect()->back()->withInput($request->all())->with('error', 'Erro ao atualizar');
             }
 
-            // send flash message success
-            return redirect()->route('vendedores.index');
+            return redirect()->route('vendedores.index')->with('message', 'Salvo com sucesso');
         } catch (\Exception $e) {
             if (config('app.debug')) {
                 throw $e;
             } else {
-                 // send flash message custom error
-                return redirect()->back();
+                return redirect()->back()->with('error', 'Erro ao tentar salvar. Caso o problema persista, entre em contato com o suporte.');
             }
         }
 
@@ -91,17 +83,15 @@ class VendedorController extends BaseController
     {
         try {
             if ($this->vendedorRepository->delete($id)) {
-                // send flash message success
+                return redirect()->back()->with('message', 'Vendedor excluido');
             } else {
-                // send flash message error
+                return redirect()->back()->with('error', 'Erro ao excluir');;
             }
-            return redirect()->back();
         } catch (\Exception $e) {
             if (config('app.debug')) {
                 throw $e;
             } else {
-                // send flash message custom error
-                return redirect()->back();
+                return redirect()->back()->with('error', 'Erro ao tentar salvar. Caso o problema persista, entre em contato com o suporte.');
             }
         }
     }

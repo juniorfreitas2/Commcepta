@@ -18,33 +18,7 @@
         </div>
     </div>
     <div class="">
-        <!-- <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-filled">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Pesquisar por nome.." aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <select class="form-control" name="account" style="width: 100%">
-                                    <option selected="">Situação</option>
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
-
+      
         <div class="row">
             @if(count($vendas))
                 @foreach($vendas as $item)

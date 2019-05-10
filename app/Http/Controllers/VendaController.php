@@ -42,18 +42,15 @@ class VendaController extends Controller
             $venda = $this->vendaRepository->create($data);
             
             if (!$venda) {
-                // send flash message error
-                return redirect()->back()->withInput($request->all());
+                return redirect()->back()->withInput($request->all())->with('error', 'Erro ao salvar');
             }
 
-            // send flash message success
-            return redirect()->route('vendas.show', [$venda->vnd_id]);
+            return redirect()->route('vendas.show', [$venda->vnd_id])->with('message', 'Salvo com sucesso');
         } catch (\Exception $e) {
             if (config('app.debug')) {
                 throw $e;
             }
-            // send flash message custom error
-            return redirect()->route('vendas.index');
+            return redirect()->back()->with('error', 'Erro ao tentar salvar. Caso o problema persista, entre em contato com o suporte.');
         }
     }
 
@@ -62,8 +59,7 @@ class VendaController extends Controller
         $venda = $this->vendaRepository->find($id);
             
         if (!$venda) {
-            // send flash message error
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Venda não existe');
         }
         $produtos = $this->produtoRepository->getProdutosDisponivels();
         $produtosAdicionados = $venda->vendaItem;
@@ -77,16 +73,21 @@ class VendaController extends Controller
         $venda = $this->vendaRepository->find($id);
             
         if (!$venda) {
-            // send flash message error
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Venda não existe');
         }
         $finalizada = $this->vendaRepository->finalizar($venda);
 
         if(!$finalizada) {
-            // send flash message error
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Erro ao salvar');
         }
-        // send flash message success
-        return redirect()->route('vendas.index');
+        
+        return redirect()->route('vendas.index')->with('message', 'Salvo com sucesso');
+    }
+
+    public function getRelatorio(Request $request) 
+    {
+        $data = $this->vendaRepository->getVendasFiltered($request->all());
+        
+        return view('venda.relatorio', compact('data'));
     }
 }

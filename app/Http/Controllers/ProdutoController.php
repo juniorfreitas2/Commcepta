@@ -36,18 +36,15 @@ class ProdutoController extends BaseController
             $produto = $this->produtoRepository->create($data);
             
             if (!$produto) {
-                // send flash message error
-                return redirect()->back()->withInput($request->all());
+                return redirect()->back()->withInput($request->all())->with('error', 'Produto não existe');
             }
-
-            // send flash message success
-            return redirect()->route('produtos.index');
+            
+            return redirect()->route('produtos.index')->with('message', 'Produto Salvo');
         } catch (\Exception $e) {
             if (config('app.debug')) {
                 throw $e;
             }
-            // send flash message custom error
-            return redirect()->route('produtos.index');
+            return redirect()->back()->with('error', 'Erro ao tentar salvar. Caso o problema persista, entre em contato com o suporte.');
         }
     }
 
@@ -56,8 +53,7 @@ class ProdutoController extends BaseController
         $produto = $this->produtoRepository->find($id);
             
         if (!$produto) {
-            // send flash message error
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Produto não existe');
         }
         //converte pro formato brasileiro
         $produto->pro_valor = number_format($produto->pro_valor , 2, ',', '.');
@@ -71,8 +67,7 @@ class ProdutoController extends BaseController
             $data = $this->produtoRepository->find($id);
 
             if (!$data) {
-                // send flash message error
-                return redirect()->back()->withInput($request->all());
+                return redirect()->back()->withInput($request->all())->with('error', 'Produto não existe');
             }
         
             //Converte valor em padrao americano
@@ -80,18 +75,15 @@ class ProdutoController extends BaseController
             $request['pro_max_desconto'] =  str_replace(['%'], [''], $request['pro_max_desconto']);
             
             if (!$this->produtoRepository->update($request->all(), $data->pro_id, 'pro_id')){
-                // send flash message error
-                return redirect()->back()->withInput($request->all());
+                return redirect()->back()->withInput($request->all())->with('error', 'Erro ao atualizar');
             }
 
-            // send flash message success
-            return redirect()->route('produtos.index');
+            return redirect()->route('produtos.index')->with('message', 'Produto atualizado');
         } catch (\Exception $e) {
             if (config('app.debug')) {
                 throw $e;
             } else {
-                 // send flash message custom error
-                return redirect()->back();
+                return redirect()->back()->with('error', 'Erro ao tentar salvar. Caso o problema persista, entre em contato com o suporte.');
             }
         }
 
@@ -101,17 +93,16 @@ class ProdutoController extends BaseController
     {
         try {
             if ($this->produtoRepository->delete($id)) {
-                // send flash message success
+                return redirect()->back()->with('message', 'Produto excluido');
             } else {
-                // send flash message error
+                return redirect()->back()->with('error', 'Erro ao excluir');;
             }
-            return redirect()->back();
+            
         } catch (\Exception $e) {
             if (config('app.debug')) {
                 throw $e;
             } else {
-                // send flash message custom error
-                return redirect()->back();
+                return redirect()->back()->with('error', 'Erro ao tentar salvar. Caso o problema persista, entre em contato com o suporte.');
             }
         }
     }

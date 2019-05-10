@@ -51,9 +51,18 @@
 <script src="{{asset('/theme/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('/theme/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('/theme/vendor/toastr/toastr.min.js')}}"></script>
-
-<!-- App scripts -->
 <script src="{{asset('/theme/scripts/luna.js')}}"></script>
+<!-- App scripts -->
+<script>
+    var message = '{{ Session::has('message')}}'
+    if(message) {
+        toastr.success('{{ Session::get('message')}}', "Sucesso");
+    }
+    var error = '{{ Session::has('error')}}'
+    if(error) {
+        toastr.danger('{{ Session::get('error')}}', "Ooops!");
+    }
+</script>
  @yield('js')
 </body>
 

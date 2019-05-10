@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         ProdutoEstoque::create([
             'pes_pro_id' => $product->pro_id,
-            'pes_qtd_reservada' => 1,
+            'pes_qtd_reservada' => 0,
             'pes_qtd_disponivel' => 6
         ]);
 
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
         ProdutoEstoque::create([
             'pes_pro_id' => $product->pro_id,
-            'pes_qtd_reservada' => 5,
+            'pes_qtd_reservada' => 0,
             'pes_qtd_disponivel' => 100
         ]);
 
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
 
         ProdutoEstoque::create([
             'pes_pro_id' => $product->pro_id,
-            'pes_qtd_reservada' => 50,
+            'pes_qtd_reservada' => 0,
             'pes_qtd_disponivel' => 200
         ]);
 
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
 
         ProdutoEstoque::create([
             'pes_pro_id' => $product->pro_id,
-            'pes_qtd_reservada' => 5,
+            'pes_qtd_reservada' => 0,
             'pes_qtd_disponivel' => 499
         ]);
 

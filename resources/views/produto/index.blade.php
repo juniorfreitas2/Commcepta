@@ -29,6 +29,8 @@
                             <th>Nome</th>
                             <th>Valor</th>
                             <th>Desconto maximo</th>
+                            <th>Qtd disponivel</th>
+                            <th>Qtd reservado</th>
                             <th class="text-center">
                                 AÇÃO
                             </th>
@@ -41,6 +43,8 @@
                                     <td ><a href="#">{{$item->pro_nome}}</a></td>
                                     <td >R$ {{number_format($item->pro_valor , 2, ',', '.')}}</td>
                                     <td>{{$item->pro_max_desconto}} %</td>
+                                    <td>{{$item->produtoEstoque ? $item->produtoEstoque->pes_qtd_disponivel: ""}}</td>
+                                    <td>{{$item->produtoEstoque ? $item->produtoEstoque->pes_qtd_reservada : ""}}</td>
                                     <td class="text-center" >
                                         <div class="btn-group ">
                                             <a href="{{url('/produtos/'.$item->pro_id.'/edit')}}" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i> Editar</a>

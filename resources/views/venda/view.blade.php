@@ -180,15 +180,18 @@
                 var data = $('#form').serializeArray();
                 var url = "{{url('/produtos/additem')}}"
 
-                var qtd = $('#vit_qtd').val();
-                var desconto = $('#desconto').val();
+                var qtd = parseInt($('#vit_qtd').val());
+                var desconto = parseInt($('#desconto').val());
+                
                 if(qtd == "" || desconto == ""){
                     toastr.error("Preencha todos os campos", 'Ooops!')
                     return;
-                }else if(qtd > $("#disponivel").text()){
+                }
+                if(qtd > parseInt($("#disponivel").text())){
                     toastr.error("Quantidade maior que a quantidade disponivel", 'Ooops!')
                     return;
-                }else if(desconto > $("#maxDesconto").text()){
+                }
+                if(desconto > parseInt($("#maxDesconto").text())){
                     toastr.error("Desconto maior que o desconto permitido", 'Ooops!')
                     return;
                 }
