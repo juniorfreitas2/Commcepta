@@ -8,17 +8,17 @@
             <li class="active">
                 <a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="nav-category">
-                Gerenciamento
+            <li class="">
+                <a href="{{url('/vendedores')}}">Vendedores</a>
             </li>
             <li class="">
-                <a href="{{url('/empresas')}}">Aplicações</a>
+                <a href="{{url('/produtos')}}">Produtos</a>
             </li>
             <li class="">
-                <a href="{{url('/empresas')}}">Pré-Cadastro</a>
+                <a href="{{url('/vendas')}}">Vendas</a>
             </li>
             <li class="">
-                <a href="{{url('/empresas')}}">Sessões</a>
+                <a href="{{url('/relatorio')}}">Relatorio</a>
             </li>
         </ul>
     </nav>
