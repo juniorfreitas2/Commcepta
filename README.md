@@ -12,7 +12,8 @@ $ php artisan serve
 ```
 
 >**Note**: Não esqueça de alterar os valores do arquivo .env para acessar o banco de dados.
-#Modelagem
+
+# Modelagem
 modelagem da aplicação para facilitar o entendimento disponivel em:
 modelagem/database.mwb
 
