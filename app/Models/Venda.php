@@ -20,4 +20,13 @@ class Venda extends BaseModel
 		'vnd_status'
     ];
 
+    public function vendedor()
+    {
+        return $this->hasOne('App\Models\Vendedor', 'ven_id', 'vnd_ven_id');
+    }
+
+    public function vendaItem()
+    {
+        return $this->hasMany('App\Models\VendaItem', 'vit_vnd_id', 'vnd_id');
+    }
 }

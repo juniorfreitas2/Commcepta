@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\VendaRepository;
 use App\Repositories\VendedorRepository;
+use App\Repositories\ProdutoRepository;
 use App\Http\Requests\VendaRequest;
 
 class VendaController extends Controller
 {
     public function __construct(
         VendaRepository $vendaRepository,
-        VendedorRepository $vendedorRepository
+        VendedorRepository $vendedorRepository,
+        ProdutoRepository $produtoRepository
     ){
         $this->vendaRepository = $vendaRepository;
-        $this->vendedorRepository = $vendedorRepository; 
+        $this->vendedorRepository = $vendedorRepository;
+        $this->produtoRepository = $produtoRepository; 
     }
 
     public function index()
@@ -50,27 +53,40 @@ class VendaController extends Controller
                 throw $e;
             }
             // send flash message custom error
-            return redirect()->route('venda.index');
+            return redirect()->route('vendas.index');
         }
     }
 
     public function show($id)
     {
-        return view('venda.view');
+        $venda = $this->vendaRepository->find($id);
+            
+        if (!$venda) {
+            // send flash message error
+            return redirect()->back();
+        }
+        $produtos = $this->produtoRepository->getProdutosDisponivels();
+        $produtosAdicionados = $venda->vendaItem;
+        
+        return view('venda.view', compact('produtos', 'venda', 'produtosAdicionados'));
     }
 
-    public function edit($id)
+    public function finalizar(Request $request)
     {
-        //
-    }
+        $id = $request->get('id');
+        $venda = $this->vendaRepository->find($id);
+            
+        if (!$venda) {
+            // send flash message error
+            return redirect()->back();
+        }
+        $finalizada = $this->vendaRepository->finalizar($venda);
 
-    public function update(VendaRequest $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        if(!$finalizada) {
+            // send flash message error
+            return redirect()->back();
+        }
+        // send flash message success
+        return redirect()->route('vendas.index');
     }
 }

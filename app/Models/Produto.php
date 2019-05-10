@@ -21,4 +21,8 @@ class Produto extends BaseModel
 		'pro_max_desconto'
     ];
 
+    public function produtoEstoque()
+    {
+        return $this->hasOne('App\Models\ProdutoEstoque', 'pes_pro_id', 'pro_id');
+    }
 }

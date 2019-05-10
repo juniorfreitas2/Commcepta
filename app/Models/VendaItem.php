@@ -24,4 +24,8 @@ class VendaItem extends BaseModel
         'vit_total_desconto'
     ];
 
+    public function produto()
+    {
+        return $this->hasOne('App\Models\Produto', 'pro_id', 'vit_pro_id');
+    }
 }

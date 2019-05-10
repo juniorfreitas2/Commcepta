@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="view-header">
                 <div class="header-icon">
-                    <i class="pe page-header-icon pe-7s-cloud-upload"></i>
+                    <i class="pe page-header-icon pe-7s-cart"></i>
                 </div>
                 <div class="header-title">
                     <h3 class="m-b-xs">Vendas</h3>
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-filled">
                     <div class="panel-body">
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
         <div class="row">
             @if(count($vendas))
@@ -55,41 +55,34 @@
                                 <a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
                                 <a class="panel-close"><i class="fa fa-times"></i></a>
                             </div>
-                            Criado em: {{\Carbon\Carbon::now()->format('d/m/Y')}}
+                            {{$item->vendedor->ven_nome}}
                         </div>
                         <div class="panel-body">
                             <table class="table small m-t-sm">
                                 <tbody>
                                 <tr>
                                     <td>
-                                        <strong class="c-white">Usuario:</strong> dsf@fdsf.com
+                                        <strong class="c-white">Vendedor:</strong> {{$item->vendedor->ven_nome}}
                                     </td>
                                     <td>
-                                        <strong class="c-white">Total venda:</strong> 1922                                                        </td>
+                                        <strong class="c-white">Total venda:</strong> {{number_format($item->vendaItem->sum('vit_total_liquido') , 2, ',', '.')}}</td>
 
                                 </tr>
                                 <tr>
                                     <td>
-                                        <strong class="c-white">Qtd itens:</strong> 3
+                                        <strong class="c-white">Qtd itens:</strong> {{$item->vendaItem->count()}}
                                     </td>
                                     <td>
-                                        <strong class="c-white">Status</strong> Ativo
+                                        <strong class="c-white">Status</strong> {{$item->vnd_status == 'R'? 'Rascunho' : 'Finalizada'}}
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <strong class="c-white">Ativo:</strong> sim
-                                    </td>
-                                    <td>
-                                        <strong class="c-white">Prazo:</strong> 14/12/2001
-                                    </td>
-                                </tr>
+                               
                                 </tbody>
                             </table>
 
                         </div>
                         <div class="panel-footer text-center">
-                            <a type="button" href="{{route('vendas.show', [2],false)}}"  style="font-size:15px" class="btn btn-default btn-xs">Acessar</a>
+                            <a type="button" href="{{route('vendas.show', [$item->vnd_id],false)}}"  style="font-size:15px" class="btn btn-default btn-xs">Acessar</a>
                         </div>
                     </div>
                 </div>
